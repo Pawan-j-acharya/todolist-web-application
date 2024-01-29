@@ -20,7 +20,7 @@ app.use(express.static("public"))
 
 const url = process.env.MONGODB_URL
 
-mongoose.connect("mongodb+srv://"+ url);
+mongoose.connect(url);
 
 const itemsSchema = new mongoose.Schema({
     name : String
