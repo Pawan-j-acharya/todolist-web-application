@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 
 // const date = require( __dirname + '/date.js')
 
+require('dotenv').config();
+
 const mongoose = require("mongoose");
 
 const _ = require("lodash")
@@ -16,7 +18,9 @@ app.use(bodyParser.urlencoded({extended:true}))
 
 app.use(express.static("public"))
 
-mongoose.connect("mongodb+srv://db-admin:admin-2001@mongo-demo-cluster.2srsv3l.mongodb.net/todolistDB");
+const url = process.env.MONGODB_URL
+
+mongoose.connect("mongodb+srv://"+ url);
 
 const itemsSchema = new mongoose.Schema({
     name : String
